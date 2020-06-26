@@ -6,6 +6,7 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
@@ -22,6 +23,11 @@ class HttpRequestController {
             return ResponseEntity.notFound().build()
         }
         cache.invalidate(clientId)
+        return ResponseEntity.ok().build()
+    }
+
+    @PostMapping("/api/post")
+    fun postButton(@RequestParam clientId: UUID): ResponseEntity<Unit> {
         return ResponseEntity.ok().build()
     }
 
